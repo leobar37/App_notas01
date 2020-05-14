@@ -1,0 +1,150 @@
+
+$input_color : #C3FC25;
+.wrapper{
+  margin: 10px 5vw;
+}
+.boton{
+    border: none;
+    outline: none;
+    color: black;
+    background-color: $input_color;
+    border-radius: 25px;
+}
+.nota{
+    .cuadro_nota{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+      border-radius: 20px; 
+      border: 2px solid black;
+        width: 17vw;
+        height: 17vh;
+        background: $input_color; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1{
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+      a{
+        width: 45%;
+        text-align: center;
+        img{
+          
+          width: 80%;
+        }
+      }
+    }  
+}
+/*=============================================
+=            seccion notas            =
+=============================================*/
+.sec_notas{
+  //variables
+  $borde : 20px;
+  width: 100%;
+  //mansory grid
+  .grid{
+     .grid-item{
+         width: 20vw;
+       
+      }
+    }
+  /*=============================================
+  =            conteneddor de notas            =
+  =============================================*/
+  .cont_notas{
+    width: 100%;
+    .nota{
+       transition: transform 0.7s ease;
+        overflow: hidden;
+        margin-bottom:15px;
+        margin-top: 8px;
+        margin-left: 4px;
+        font-size: 1rem;
+        .titulo , .contenido_nota{
+         background-color: rgba($color: #C3FC25, $alpha: 0.2);
+          width: 100%;
+          border: 2px solid red;
+           padding: 10px 5px;
+        }
+       .titulo{
+          border-bottom: none !important;
+          border-top-right-radius: $borde;
+          border-top-left-radius:$borde;
+       }
+       .contenido_nota{
+         padding: 10px;
+         border-bottom-left-radius: $borde;
+         border-bottom-right-radius: $borde;
+       }
+      
+      &:hover  {
+        // margin-bottom: 20px;
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+     }
+  }
+
+}
+/*=============================================
+=            modal agregar nota            =
+=============================================*/
+#modal_push{
+  margin-left: 20%;
+ margin-top: 4rem;
+ .nota{
+     background: white;
+     height: 85vh;
+     width:  55%;
+     margin: 0 10vw;
+     border-radius: 25px;
+      .titulo, .text_nota {
+         margin-left: 10%;
+         margin-top: 1rem;
+         border: none;
+         outline: none;
+         width: 80%;
+         font-size: 20px;
+         border-radius: 25px;
+         padding: 20px 20px;
+         background-color: $input_color;
+      }
+ 
+     .text_nota{
+       height: 50vh;
+       overflow-y: hidden;
+       max-height: 50vh;
+     }
+      h1{
+         //  margin-top: 1rem;
+           text-align: center;
+           padding: 15px 0;
+           font-size: 25px;
+      }
+      .close_icon{
+         position: relative;
+         cursor: pointer;
+       a{
+           color: black;
+         i{
+             position: absolute;
+              font-size: 30px;
+                right: 14px;
+                top: 10px;
+         }
+       }
+      
+      }
+     .btn_note{
+         margin-top: 1rem;
+          width: 20%;
+          padding:  15px 10px;
+          font-size: 20px;
+     }
+}
+}

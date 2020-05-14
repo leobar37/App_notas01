@@ -1,0 +1,58 @@
+<div class="wrapper nota">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="cuadro_nota">
+        <a href="javascript:void(0)" id="push_boton">
+          <img src="assets/imgs/more_svg.png" alt="">  
+      </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <section class="sec_notas">
+      <h1>mas recientes</h1>
+      <div class="col-md-12">
+        <div class="cont_notas grid">
+          <a class="nota grid-item"
+          (click)="open_nota(nota.id_note)"
+          *ngFor="let nota of lista_notas">
+            <div class="titulo" id="{{nota.id_note}}">
+              {{nota.nombre}}
+           </div>
+           <div class="contenido_nota">
+            <app-note [note]="nota"></app-note>
+           </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+  <!-- modal -->
+  <div class="modal fade" tabindex="-1" id="modal_push" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="" role="document">
+      <div class="modal_push">
+        <div class="nota">
+          <div class="close_icon">
+           <a >
+            <i class="far fa-times-circle"></i>
+           </a>
+          </div>
+          <h1>Agregar nota</h1>
+            <form action="" #f="ngForm" (ngSubmit)="guardarNota(f)">
+              <input 
+              [(ngModel)]="nombre"
+              name="nota_name"
+              type="text" placeholder="nombre" class="titulo">
+              <div id="editorjs" class="text_nota">
+              </div>
+               <div class="d-flex justify-content-center">
+                     <button  type="submit" class="boton btn_note">
+                        listo
+                     </button>
+               </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
