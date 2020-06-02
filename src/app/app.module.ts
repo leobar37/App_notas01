@@ -8,11 +8,15 @@ import { HttpClientModule} from '@angular/common/http';
 import { FormsModule} from '@angular/forms'
 import { NotesService } from './services/notes.service';
 import { NoteComponent } from './pages/component/note/note.component';
+import { CollectionsComponent } from './pages/collections/collections.component';
+import { ItemCollectComponent } from './pages/component/item-collect/item-collect.component';
 @NgModule({
   declarations: [
     AppComponent,
     NotesComponent,
     NoteComponent,
+    CollectionsComponent,
+    ItemCollectComponent,
   ],
   imports: [
     BrowserModule,

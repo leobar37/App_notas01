@@ -1,150 +1,187 @@
-
-$input_color : #C3FC25;
-.wrapper{
+$borde: 20px;
+$relleno: #c3fc25;
+.wrapper {
   margin: 10px 5vw;
 }
-.boton{
-    border: none;
-    outline: none;
-    color: black;
-    background-color: $input_color;
-    border-radius: 25px;
-}
-.nota{
-    .cuadro_nota{
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       justify-content: center;
-      border-radius: 20px; 
-      border: 2px solid black;
-        width: 17vw;
-        height: 17vh;
-        background: $input_color; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        h1{
-            padding: 0 10px;
-            font-size: 1.2rem;
+/*=============================================
+=            mixins            =
+=============================================*/
+@mixin nota_mix($valor) {
+  //true  = principal
+  //false =  notas
+  .nota {
+    font-size: 1rem;
+    @if $valor {
+      overflow: hidden;
+      transition: transform 1s ease-in-out;
+      margin-bottom: 20px;
+      margin-top: 8px;
+      margin-left: 10px;
+    } @else {
+      .contenido_nota {
+        max-height: 75vh;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 8px;
         }
-
-      a{
-        width: 45%;
-        text-align: center;
-        img{
-          
-          width: 80%;
+        /* Track */
+        &::-webkit-scrollbar-track {
+          background: #f1f1f1; 
+        }
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background: black; 
+        }
+        
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+          background: blue; 
         }
       }
-    }  
+      .options {
+        width: 100%;
+        background: black;
+        border-radius: 20px;
+        padding: 10px 0;
+        span.create{
+           color: white;
+           padding-left: 1rem;
+        }
+        span.trash {
+          transition-property: transform;
+          transition-duration: 1s;
+          transition-timing-function: ease-in-out;
+          i {
+            color: white;
+            font-size: 1rem;
+            padding: 0.2rem 0.88rem;
+          }
+          &:hover i {
+            transform: scale(1.3);
+          }
+        }
+      }
+    }
+    .titulo,
+    .contenido_nota {
+      @if $valor {
+        background-color: rgba($color: #c3fc25, $alpha: 0.2);
+      } @else {
+        background-color: white;
+      }
+      width: 100%;
+      border: 2px solid red;
+      padding: 10px 5px;
+    }
+    .titulo {
+      border-bottom: none !important;
+      border-top-right-radius: $borde;
+      border-top-left-radius: $borde;
+      padding: 1rem 1.3rem;
+      @if $valor{}
+       @else{
+        //  border-bottom: 2px solid black;
+       border:  none;
+        outline: none;
+      }
+    }
+    .contenido_nota {
+      display: block;
+      padding: 10px;
+      border-bottom-left-radius: $borde;
+      border-bottom-right-radius: $borde;
+      @if $valor{}
+      @else{
+        border: none;
+        outline: none;
+     }
+    }
+  }
+}
+
+.nota {
+  .cuadro_nota {
+    width: 17vw;
+    height: 17vh;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      padding: 0 10px;
+      font-size: 1.2rem;
+    }
+    a {
+      transition: transform 1s ease-in-out;
+      width: 45%;
+      text-align: center;
+      img {
+        width: 40%;
+      }
+      &:hover  img{
+         transform: scale(1.4); 
+      }
+    }
+  }
 }
 /*=============================================
 =            seccion notas            =
 =============================================*/
-.sec_notas{
+.sec_notas {
   //variables
-  $borde : 20px;
+
   width: 100%;
   //mansory grid
-  .grid{
-     .grid-item{
-         width: 20vw;
-       
+  .grid {
+    .grid-item {
+      width: 20vw;
+    }
+  }
+  /*=============================================
+  =            contenedor de notas            =
+  =============================================*/
+  .cont_notas {
+    width: 100%;
+    @include nota_mix(true);
+    .nota {
+      &:hover {
+        // margin-bottom: 20px;
+        margin-bottom: 50px !important;
+        transition: display 2s ease;
+        cursor: pointer;
+         .contenido_nota{
+            background-color: rgba($color: $relleno , $alpha: 0.8);
+         }
       }
     }
-  /*=============================================
-  =            conteneddor de notas            =
-  =============================================*/
-  .cont_notas{
-    width: 100%;
-    .nota{
-       transition: transform 0.7s ease;
-        overflow: hidden;
-        margin-bottom:15px;
-        margin-top: 8px;
-        margin-left: 4px;
-        font-size: 1rem;
-        .titulo , .contenido_nota{
-         background-color: rgba($color: #C3FC25, $alpha: 0.2);
-          width: 100%;
-          border: 2px solid red;
-           padding: 10px 5px;
-        }
-       .titulo{
-          border-bottom: none !important;
-          border-top-right-radius: $borde;
-          border-top-left-radius:$borde;
-       }
-       .contenido_nota{
-         padding: 10px;
-         border-bottom-left-radius: $borde;
-         border-bottom-right-radius: $borde;
-       }
-      
-      &:hover  {
-        // margin-bottom: 20px;
-        cursor: pointer;
-        transform: scale(1.1);
-      }
-     }
   }
-
 }
 /*=============================================
 =            modal agregar nota            =
 =============================================*/
-#modal_push{
+#modal_push {
   margin-left: 20%;
- margin-top: 4rem;
- .nota{
-     background: white;
-     height: 85vh;
-     width:  55%;
-     margin: 0 10vw;
-     border-radius: 25px;
-      .titulo, .text_nota {
-         margin-left: 10%;
-         margin-top: 1rem;
-         border: none;
-         outline: none;
-         width: 80%;
-         font-size: 20px;
-         border-radius: 25px;
-         padding: 20px 20px;
-         background-color: $input_color;
+  margin-top: 4rem;
+  .modal_head {
+    background: transparent;
+    // height: 85vh;
+    width: 60vw;
+    position: relative;
+    border-radius: 25px;
+    .close_icon {
+      position: relative;
+      cursor: pointer;
+      a {
+        color: black;
+        i {
+          position: absolute;
+          font-size: 30px;
+          right: 14px;
+          top: 10px;
+        }
       }
- 
-     .text_nota{
-       height: 50vh;
-       overflow-y: hidden;
-       max-height: 50vh;
-     }
-      h1{
-         //  margin-top: 1rem;
-           text-align: center;
-           padding: 15px 0;
-           font-size: 25px;
-      }
-      .close_icon{
-         position: relative;
-         cursor: pointer;
-       a{
-           color: black;
-         i{
-             position: absolute;
-              font-size: 30px;
-                right: 14px;
-                top: 10px;
-         }
-       }
-      
-      }
-     .btn_note{
-         margin-top: 1rem;
-          width: 20%;
-          padding:  15px 10px;
-          font-size: 20px;
-     }
-}
+    }
+    @include nota_mix(false);
+  }
+
 }

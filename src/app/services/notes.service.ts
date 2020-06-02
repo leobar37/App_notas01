@@ -12,16 +12,24 @@ export class NotesService {
      private http:HttpClient
   ) 
   {}
-   agregarNota(note:Note){
+   public agregarNota(note:Note){
      let url = environment.url_backend  + 'note';
      return this.http.post(url ,note);
    }
-   obtenerNotas(){
-    let url = environment.url_backend  + 'note';
+   public obtenerNotas(idCollec:string){
+    let url = environment.url_backend  + 'notes/' + idCollec;
     return this.http.get(url);
   }
-  obtenerNota(idNote){
+  public obtenerNota(idNote: string){
     let url = environment.url_backend  + 'note/'+idNote;
     return this.http.get(url);
-   }
+  }
+  public editarNota(note:Note){
+    let url = environment.url_backend  + 'note/'+note.id_note;
+    return this.http.put(url,note);
+  }
+  public eliminarNota(idNote:string){
+    let url = environment.url_backend  + 'note/' + idNote;
+    return this.http.delete(url);
+  }
 }

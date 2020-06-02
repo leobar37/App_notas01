@@ -1,0 +1,59 @@
+<div class="contenedor">
+    <header> 
+        <!-- parte del nav -->
+         <!-- notesApp -->
+          <h1>notesApp</h1>
+          <div class="icono">
+            <a (click)="createCollect()" ><i class="fas fa-plus"></i></a>
+          </div>
+    </header>
+  <main>
+      <h1>collecciones :</h1>
+   <div class="cont_cards grid">
+        <a class="targeta grid-item"
+         *ngFor="let colleccion of list_collections" 
+         (click)="openCollec(colleccion.id_collection)"
+        >
+           <div class="flip-card-container">
+               <div class="flip-card">
+                   <div class="flip-card-front">
+                       <div class="contenidoFront">
+                            <h2 class="titulo">{{colleccion.name}}</h2>
+                       </div>
+                       </div>
+                       <div class="flip-card-back">
+                           <div class="contenidoBack">
+                             <table>
+                               <tr>
+                                   <td>
+                                       <strong>creado : </strong>
+                                    </td>
+                                    <td>
+                                      <p>{{colleccion.creation}}</p>
+                                    </td>
+                               </tr>
+                               <tr>
+                                   <td>
+                                       <strong>notas: </strong>
+                                   </td>
+                                   <td>
+                                      <p>18</p>
+                                   </td>
+                               </tr>
+                             
+                             </table>
+                             <div class="description">
+                               <strong>Description:</strong>
+                               <p >
+                               {{ colleccion.description}}
+                               </p>
+                             </div>
+                             
+                       </div>
+                    </div>
+               </div>
+           </div>
+          </a>   
+   </div>
+  </main>
+  </div>

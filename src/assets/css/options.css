@@ -1,0 +1,16 @@
+
+.cont_options {
+    /* border: 2px solid black; */
+    padding: 5px 10px;
+     margin: 15px 0;
+     border-radius: 15px;
+  }
+    .cont_options .con_bas {
+      border-radius: 15px;
+      border: 2px solid black;
+      padding: 5px 10px; 
+    }
+      .cont_options .con_bas span {
+        padding: 10px 15px; }
+        .cont_options .con_bas span a {
+          cursor: pointer; }
